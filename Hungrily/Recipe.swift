@@ -15,29 +15,25 @@ struct Recipe {
     var uid: String!
     var ref: FIRDatabaseReference?
     var key: String?
+    var chefId: String!
+    var title: String!
+    var cuisine: String!
     var category: String!
+    var ingredients: String!
+    var description: String!
     var photoURL: String!
-    var firstName: String!
-    var lastName: String!
-    var email: String?
-    var biography: String?
-    var address: String?
-    var country: String?
-    var availability: String?
     
     init (snapshot: FIRDataSnapshot) {
-        uid = (snapshot.value! as! NSDictionary)["uid"] as! String
         ref = snapshot.ref
         key = snapshot.key
+        uid = (snapshot.value! as! NSDictionary)["uid"] as! String
+        chefId = (snapshot.value! as! NSDictionary)["chefId"] as! String
+        title = (snapshot.value! as! NSDictionary)["title"] as! String
+        cuisine = (snapshot.value! as! NSDictionary)["cuisine"] as! String
         category = (snapshot.value! as! NSDictionary)["category"] as! String
+        ingredients = (snapshot.value! as! NSDictionary)["ingredients"] as! String
+        description = (snapshot.value! as! NSDictionary)["description"] as! String
         photoURL = (snapshot.value! as! NSDictionary)["photoURL"] as! String
-        firstName = (snapshot.value! as! NSDictionary)["firstName"] as! String
-        lastName = (snapshot.value! as! NSDictionary)["lastName"] as! String
-        email = (snapshot.value! as! NSDictionary)["email"] as? String
-        biography = (snapshot.value! as! NSDictionary)["biography"] as? String
-        address = (snapshot.value! as! NSDictionary)["address"] as? String
-        country = (snapshot.value! as! NSDictionary)["country"] as? String
-        availability = (snapshot.value! as! NSDictionary)["availability"] as? String
     }
     
 }

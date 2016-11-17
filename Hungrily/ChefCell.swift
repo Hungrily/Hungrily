@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
 
 class ChefCell: UITableViewCell {
     
-    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var avatar: UIImageView! {
+        didSet {
+            avatar.layer.cornerRadius = 10
+            avatar.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var biography: UILabel!
+    
+    var dataBaseRef: FIRDatabaseReference! {
+        return FIRDatabase.database().reference()
+    }
+    var storageRef: FIRStorage {
+        return FIRStorage.storage()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +34,23 @@ class ChefCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func configureCell(user: Chef) {
+        self.name.text = "\(user.firstName!) \(user.lastName!)"
+        self.biography.text = user.biography!
+        let imageURL = user.photoURL!
+        self.storageRef.reference(forURL: imageURL).data(withMaxSize: 10*1024*1024, completion: { (imgData, error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    if let data = imgData {
+                        self.avatar.image = UIImage(data: data)
+                    }
+                }
+            } else {
+                self.avatar.image = UIImage(named: "Chef")
+            }
+        })
     }
 
 }

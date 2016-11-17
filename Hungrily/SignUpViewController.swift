@@ -12,7 +12,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
-            userImageView.layer.cornerRadius = 5
+            userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
+            userImageView.clipsToBounds = true
             userImageView.isUserInteractionEnabled = true
         }
     }

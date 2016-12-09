@@ -17,14 +17,20 @@ iOS, Swift, Objective-C, Cocoa Pods, Firebase
 - [x] Milestone 6: Foodie can see the details of a selected chef
 - [x] Milestone 7: Chef can browse through their list of Recipes
 - [x] Milestone 8: Chef can see the details of a selected recipe
-- [ ] Milestone 9: Foodie can browse through the list of Recipes
-- [ ] Milestone 10: Foodie can see the details of a selected recipe
+- [x] Milestone 9: Foodie can browse through the list of Recipes
+- [x] Milestone 10: Foodie can see the details of a selected recipe
 
 The following **additional** features are implemented:
 
 - [x] Background colors and other UI enhancements
 
 ## Video Walkthrough 
+
+## Walkthrough for latest version:
+
+
+
+## Walkthrough for initial version:
 
 Here's a walkthrough of implemented user stories:
 

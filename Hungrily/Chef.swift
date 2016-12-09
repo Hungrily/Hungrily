@@ -22,6 +22,7 @@ struct Chef {
     var email: String?
     var biography: String?
     var address: String?
+    var city: String?
     var country: String?
     var availability: String?
     
@@ -36,6 +37,7 @@ struct Chef {
         email = (snapshot.value! as! NSDictionary)["email"] as? String
         biography = (snapshot.value! as! NSDictionary)["biography"] as? String
         address = (snapshot.value! as! NSDictionary)["address"] as? String
+        city = (snapshot.value! as! NSDictionary)["city"] as? String
         country = (snapshot.value! as! NSDictionary)["country"] as? String
         availability = (snapshot.value! as! NSDictionary)["availability"] as? String
     }

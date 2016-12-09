@@ -19,6 +19,8 @@ class ChefCell: UITableViewCell {
         }
     }
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var biography: UILabel!
     
     var dataBaseRef: FIRDatabaseReference! {
@@ -38,6 +40,8 @@ class ChefCell: UITableViewCell {
     
     func configureCell(user: Chef) {
         self.name.text = "\(user.firstName!) \(user.lastName!)"
+        self.address.text = "\(user.city!), \(user.country!)"
+        self.availability.text = user.availability!
         self.biography.text = user.biography!
         let imageURL = user.photoURL!
         self.storageRef.reference(forURL: imageURL).data(withMaxSize: 10*1024*1024, completion: { (imgData, error) in

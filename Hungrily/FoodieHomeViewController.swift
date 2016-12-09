@@ -131,6 +131,9 @@ class FoodieHomeViewController: UIViewController, UITableViewDataSource, UITable
             let destination = segue.destination as! RecipeDetailViewController
             destination.sender = "Foodie"
             destination.recipe = recipes![(self.tableView.indexPathForSelectedRow?.row)!]
+        } else if segue.identifier == "FoodieSettingsSegue" {
+            let destination = segue.destination as! FoodieSettingsViewController
+            destination.foodie = self.foodie
         }
     }
     

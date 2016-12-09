@@ -24,10 +24,10 @@ struct AuthService {
     
     // 1 - Creating the Signup function
     
-    func signUpChef (pictureData: NSData!, firstName: String, lastName: String, email: String, password: String, biography: String, address: String, country: String, availability: String) {
+    func signUpChef (pictureData: NSData!, firstName: String, lastName: String, email: String, password: String, biography: String, address: String, city: String, country: String, availability: String) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
-                self.setChefInfo(user: user, pictureData: pictureData, firstName: firstName, lastName: lastName, password: password, biography: biography, address: address, country: country, availability: availability)
+                self.setChefInfo(user: user, pictureData: pictureData, firstName: firstName, lastName: lastName, password: password, biography: biography, address: address, city: city, country: country, availability: availability)
             } else {
                 let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDel.signUpError(message: error!.localizedDescription)
@@ -48,8 +48,8 @@ struct AuthService {
     
     // 2 - Save the User Profile Picture to Firebase Storage, Assign Photo URL to the new user
     
-    private func setChefInfo(user: FIRUser!, pictureData: NSData!, firstName: String, lastName: String, password: String, biography: String, address: String, country: String, availability: String) {
-        let imageRef = storageRef.child("Users").child("\(user.displayName) (\(user.uid))")
+    private func setChefInfo(user: FIRUser!, pictureData: NSData!, firstName: String, lastName: String, password: String, biography: String, address: String, city: String, country: String, availability: String) {
+        let imageRef = storageRef.child("Users").child("\(firstName) \(lastName) (\(user.uid))")
         let metaData = FIRStorageMetadata()
         metaData.contentType = "image/jpeg"
         imageRef.put(pictureData as Data, metadata: metaData) { (newMetaData, error) in
@@ -61,7 +61,7 @@ struct AuthService {
                 }
                 changeRequest.commitChanges(completion: { (error) in
                     if error == nil {
-                        self.saveChefInfo(user: user, firstName: firstName, lastName: lastName, password: password, biography: biography, address: address, country: country, availability: availability)
+                        self.saveChefInfo(user: user, firstName: firstName, lastName: lastName, password: password, biography: biography, address: address, city: city, country: country, availability: availability)
                     } else {
                         let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
                         appDel.signUpError(message: error!.localizedDescription)
@@ -102,8 +102,8 @@ struct AuthService {
     
     // 3 - Save the User Info to Firebase Database
     
-    private func saveChefInfo(user: FIRUser!, firstName: String, lastName: String, password: String, biography: String, address: String, country: String, availability: String) {
-        let userInfo = ["category": "Chef", "uid": user.uid, "photoURL": String(describing: user.photoURL!), "firstName": firstName, "lastName": lastName, "email": user.email!, "biography": biography, "address": address, "country": country, "availability": availability]
+    private func saveChefInfo(user: FIRUser!, firstName: String, lastName: String, password: String, biography: String, address: String, city: String, country: String, availability: String) {
+        let userInfo = ["category": "Chef", "uid": user.uid, "photoURL": String(describing: user.photoURL!), "firstName": firstName, "lastName": lastName, "email": user.email!, "biography": biography, "address": address, "city": city, "country": country, "availability": availability]
         let userRef = dataBaseRef.child("users").child(user.uid)
         userRef.setValue(userInfo) { (error, ref) in
             if error == nil {

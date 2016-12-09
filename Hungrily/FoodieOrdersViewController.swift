@@ -1,8 +1,8 @@
 //
-//  OrdersViewController.swift
+//  FoodieOrdersViewController.swift
 //  Hungrily
 //
-//  Created by Akash Ungarala on 11/14/16.
+//  Created by Akash Ungarala on 12/8/16.
 //  Copyright © 2016 Akash Ungarala. All rights reserved.
 //
 
@@ -11,11 +11,10 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
-class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class FoodieOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var chef: Chef!
     var orders: [Order]!
     var dataBaseRef: FIRDatabaseReference! {
         return FIRDatabase.database().reference()
@@ -59,7 +58,7 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         return UITableViewAutomaticDimension
     }
     
-    @IBAction func backToOrders(storyboard: UIStoryboardSegue) {}
+    @IBAction func backToFoodieOrders(storyboard: UIStoryboardSegue) {}
     
     func fetchOrders() {
         dataBaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("orders").observe(.value, with: { (snapshot) in
@@ -83,10 +82,10 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ChefOrderDetailSegue" {
-            let destination = segue.destination as! OrderDetailViewController
+        if segue.identifier == "FoodieOrderDetailSegue" {
+            let destination = segue.destination as! FoodieOrderDetailViewController
             destination.order = orders![(self.tableView.indexPathForSelectedRow?.row)!]
         }
     }
-
+    
 }

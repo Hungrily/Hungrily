@@ -55,6 +55,12 @@ class SignUpViewController: UIViewController {
             addressTextField.delegate = self
         }
     }
+    @IBOutlet weak var cityTextField: UITextField! {
+        didSet {
+            cityTextField.layer.cornerRadius = 5
+            cityTextField.delegate = self
+        }
+    }
     @IBOutlet weak var countryTextField: UITextField! {
         didSet {
             countryTextField.layer.cornerRadius = 5
@@ -89,16 +95,14 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func categoryValueChanged(_ sender: UISegmentedControl) {
+        addressTextField.text = ""
+        cityTextField.text = ""
+        countryTextField.text = ""
+        availabilityTextField.text = ""
         if sender.selectedSegmentIndex == 0 {
             chefDetails.isHidden = false
-            addressTextField.text = ""
-            countryTextField.text = ""
-            availabilityTextField.text = ""
         } else if sender.selectedSegmentIndex == 1 {
             chefDetails.isHidden = true
-            addressTextField.text = ""
-            countryTextField.text = ""
-            availabilityTextField.text = ""
         }
     }
     
@@ -110,6 +114,7 @@ class SignUpViewController: UIViewController {
         let password = passwordTextField.text!
         let biography = biographyTextField.text!
         let address = addressTextField.text!
+        let city = cityTextField.text!
         let country = countryTextField.text!
         let availability = availabilityTextField.text!
         let pictureData = UIImageJPEGRepresentation(self.userImageView.image!, 0.70)
@@ -126,6 +131,9 @@ class SignUpViewController: UIViewController {
             if address.isEmpty {
                 self.view.endEditing(true)
                 showMessage(message: "Address is a mandatory field")
+            } else if city.isEmpty {
+                self.view.endEditing(true)
+                showMessage(message: "City is a mandatory field")
             } else if country.isEmpty {
                 self.view.endEditing(true)
                 showMessage(message: "Country is a mandatory field")
@@ -134,7 +142,7 @@ class SignUpViewController: UIViewController {
                 showMessage(message: "Availability is a mandatory field")
             } else {
                 self.view.endEditing(true)
-                authService.signUpChef(pictureData: pictureData as NSData!, firstName: firstName, lastName: lastName, email: finalEmail, password: password, biography: biography, address: address, country: country, availability: availability)
+                authService.signUpChef(pictureData: pictureData as NSData!, firstName: firstName, lastName: lastName, email: finalEmail, password: password, biography: biography, address: address, city: city, country: country, availability: availability)
             }
         } else {
             self.view.endEditing(true)
@@ -238,6 +246,7 @@ extension SignUpViewController: UITextFieldDelegate,UIPickerViewDelegate, UIPick
         passwordTextField.resignFirstResponder()
         biographyTextField.resignFirstResponder()
         addressTextField.resignFirstResponder()
+        cityTextField.resignFirstResponder()
         countryTextField.resignFirstResponder()
         availabilityTextField.resignFirstResponder()
         return true
@@ -245,12 +254,12 @@ extension SignUpViewController: UITextFieldDelegate,UIPickerViewDelegate, UIPick
     
     // Moving the View down after the Keyboard appears
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateView(up: true, moveValue: 45)
+//        animateView(up: true, moveValue: 45)
     }
     
     // Moving the View down after the Keyboard disappears
     func textFieldDidEndEditing(_ textField: UITextField) {
-        animateView(up: false, moveValue: 45)
+//        animateView(up: false, moveValue: 45)
     }
     
     // Move the View Up & Down when the Keyboard appears

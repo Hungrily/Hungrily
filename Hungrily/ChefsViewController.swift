@@ -80,6 +80,7 @@ class ChefsViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChefDetailSegue" {
             let destination = segue.destination as! ChefDetailViewController
+            destination.sender = "Chef"
             destination.chef = chefs![(self.tableView.indexPathForSelectedRow?.row)!]
         }
     }

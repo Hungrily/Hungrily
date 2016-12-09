@@ -212,12 +212,12 @@ extension NewRecipeViewController: UITextFieldDelegate, UIImagePickerControllerD
     
     // Moving the View down after the Keyboard appears
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateView(up: true, moveValue: 45)
+//        animateView(up: true, moveValue: 45)
     }
     
     // Moving the View down after the Keyboard disappears
     func textFieldDidEndEditing(_ textField: UITextField) {
-        animateView(up: false, moveValue: 45)
+//        animateView(up: false, moveValue: 45)
     }
     
     // Move the View Up & Down when the Keyboard appears

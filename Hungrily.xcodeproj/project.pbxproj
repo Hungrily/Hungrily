@@ -14,6 +14,9 @@
 		C44482091DD26616001AD1EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44482071DD26616001AD1EA /* LaunchScreen.storyboard */; };
 		C44482161DD295F1001AD1EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44482151DD295F1001AD1EA /* HomeViewController.swift */; };
 		C44482181DD295FC001AD1EA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44482171DD295FC001AD1EA /* SignUpViewController.swift */; };
+		C44729091DF4AD61001D8FC6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44729081DF4AD61001D8FC6 /* Order.swift */; };
+		C447290B1DFA4352001D8FC6 /* FoodieOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447290A1DFA4352001D8FC6 /* FoodieOrdersViewController.swift */; };
+		C447290D1DFA4484001D8FC6 /* FoodieOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447290C1DFA4484001D8FC6 /* FoodieOrderDetailViewController.swift */; };
 		C4C189B31DDA104500650CE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4C189B21DDA104500650CE1 /* GoogleService-Info.plist */; };
 		C4C189B51DDA182500650CE1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C189B41DDA182500650CE1 /* AuthService.swift */; };
 		C4C189B71DDA2D3000650CE1 /* Chef.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C189B61DDA2D3000650CE1 /* Chef.swift */; };
@@ -49,6 +52,9 @@
 		C444820A1DD26616001AD1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44482151DD295F1001AD1EA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C44482171DD295FC001AD1EA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C44729081DF4AD61001D8FC6 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		C447290A1DFA4352001D8FC6 /* FoodieOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodieOrdersViewController.swift; sourceTree = "<group>"; };
+		C447290C1DFA4484001D8FC6 /* FoodieOrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodieOrderDetailViewController.swift; sourceTree = "<group>"; };
 		C4C189B21DDA104500650CE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4C189B41DDA182500650CE1 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C4C189B61DDA2D3000650CE1 /* Chef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chef.swift; sourceTree = "<group>"; };
@@ -147,7 +153,6 @@
 			children = (
 				C4C189E11DDA9ECD00650CE1 /* Login */,
 				C4C18A061DDFF2D000650CE1 /* Recipe */,
-				C4C18A071DDFF31700650CE1 /* Order */,
 				C4C189E01DDA9EB000650CE1 /* Chef */,
 				C4C189DF1DDA9BDE00650CE1 /* Foodie */,
 			);
@@ -171,6 +176,7 @@
 				C4C189B61DDA2D3000650CE1 /* Chef.swift */,
 				C4C189B81DDA2D3B00650CE1 /* Foodie.swift */,
 				C4C189C01DDA5DAF00650CE1 /* Recipe.swift */,
+				C44729081DF4AD61001D8FC6 /* Order.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -181,6 +187,9 @@
 				C4C189BC1DDA472D00650CE1 /* FoodieHomeViewController.swift */,
 				C4C189D21DDA7D4200650CE1 /* FoodieSettingsViewController.swift */,
 				C4C189DC1DDA8C4300650CE1 /* FoodieDetailViewController.swift */,
+				C447290A1DFA4352001D8FC6 /* FoodieOrdersViewController.swift */,
+				C447290C1DFA4484001D8FC6 /* FoodieOrderDetailViewController.swift */,
+				C4C18A081DE007B300650CE1 /* OrderViewController.swift */,
 			);
 			name = Foodie;
 			sourceTree = "<group>";
@@ -193,6 +202,8 @@
 				C4C189D01DDA7D2E00650CE1 /* ChefsViewController.swift */,
 				C4C189D61DDA7FFE00650CE1 /* ChefDetailViewController.swift */,
 				C4C189D81DDA8A0F00650CE1 /* ChefRecipesViewController.swift */,
+				C4C189C21DDA719400650CE1 /* OrdersViewController.swift */,
+				C4C189CE1DDA7C6C00650CE1 /* OrderDetailViewController.swift */,
 			);
 			name = Chef;
 			sourceTree = "<group>";
@@ -213,16 +224,6 @@
 				C4C189C61DDA729E00650CE1 /* NewRecipeViewController.swift */,
 			);
 			name = Recipe;
-			sourceTree = "<group>";
-		};
-		C4C18A071DDFF31700650CE1 /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				C4C189C21DDA719400650CE1 /* OrdersViewController.swift */,
-				C4C189CE1DDA7C6C00650CE1 /* OrderDetailViewController.swift */,
-				C4C18A081DE007B300650CE1 /* OrderViewController.swift */,
-			);
-			name = Order;
 			sourceTree = "<group>";
 		};
 		E3AEC52B955AF12316B51321 /* Pods */ = {
@@ -368,6 +369,7 @@
 				C4C189BF1DDA5B4100650CE1 /* RecipeCell.swift in Sources */,
 				C44482161DD295F1001AD1EA /* HomeViewController.swift in Sources */,
 				C4C189BB1DDA471000650CE1 /* ChefHomeViewController.swift in Sources */,
+				C447290B1DFA4352001D8FC6 /* FoodieOrdersViewController.swift in Sources */,
 				C4C189CF1DDA7C6C00650CE1 /* OrderDetailViewController.swift in Sources */,
 				C4C189B71DDA2D3000650CE1 /* Chef.swift in Sources */,
 				C4C189C91DDA73A500650CE1 /* ChefSettingsViewController.swift in Sources */,
@@ -376,6 +378,8 @@
 				C4C189B51DDA182500650CE1 /* AuthService.swift in Sources */,
 				C4C189D31DDA7D4200650CE1 /* FoodieSettingsViewController.swift in Sources */,
 				C4C189D51DDA7EE600650CE1 /* ChefCell.swift in Sources */,
+				C44729091DF4AD61001D8FC6 /* Order.swift in Sources */,
+				C447290D1DFA4484001D8FC6 /* FoodieOrderDetailViewController.swift in Sources */,
 				C4C18A091DE007B300650CE1 /* OrderViewController.swift in Sources */,
 				C4C189BD1DDA472D00650CE1 /* FoodieHomeViewController.swift in Sources */,
 				C4C189C51DDA721900650CE1 /* OrderCell.swift in Sources */,

@@ -21,10 +21,14 @@ class ChefDetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var biography: UITextView!
     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var city: UILabel!
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var availability: UILabel!
+    @IBOutlet weak var backToChefs: UIButton!
+    @IBOutlet weak var backToFoodieOrderDetail: UIButton!
     
     var chef: Chef!
+    var sender: String!
     var dataBaseRef: FIRDatabaseReference! {
         return FIRDatabase.database().reference()
     }
@@ -34,9 +38,17 @@ class ChefDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.sender == "Chef" {
+            backToChefs.isHidden = false
+            backToFoodieOrderDetail.isHidden = true
+        } else if self.sender == "Foodie" {
+            backToChefs.isHidden = true
+            backToFoodieOrderDetail.isHidden = false
+        }
         self.name.text = "\(chef.firstName!) \(chef.lastName!)"
         self.biography.text = chef.biography!
         self.address.text = chef.address!
+        self.city.text = chef.city!
         self.country.text = chef.country!
         self.availability.text = chef.availability!
         let imageURL = chef.photoURL!

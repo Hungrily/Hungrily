@@ -14,7 +14,7 @@ class RecipeCell: UITableViewCell {
     
     @IBOutlet weak var avatar: UIImageView! {
         didSet {
-            avatar.layer.cornerRadius = avatar.frame.size.width / 2
+            avatar.layer.cornerRadius = 10
             avatar.clipsToBounds = true
         }
     }
@@ -25,6 +25,8 @@ class RecipeCell: UITableViewCell {
         }
     }
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var cuisine: UILabel!
     @IBOutlet weak var category: UILabel!
@@ -74,6 +76,8 @@ class RecipeCell: UITableViewCell {
         userRef.observe(.value, with: { (snapshot) in
             let chef = Chef(snapshot: snapshot)
             self.name.text = "\(chef.firstName!) \(chef.lastName!)"
+            self.address.text = "\(chef.city!), \(chef.country!)"
+            self.availability.text = chef.availability!
             let imageURL = chef.photoURL!
             self.storageRef.reference(forURL: imageURL).data(withMaxSize: 10*1024*1024, completion: { (imgData, error) in
                 if error == nil {

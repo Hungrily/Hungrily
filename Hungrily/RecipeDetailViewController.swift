@@ -18,9 +18,11 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var order: UIButton!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var availability: UILabel!
     @IBOutlet weak var avatar: UIImageView! {
         didSet {
-            avatar.layer.cornerRadius = avatar.frame.size.width / 2
+            avatar.layer.cornerRadius = 10
             avatar.clipsToBounds = true
         }
     }
@@ -53,6 +55,8 @@ class RecipeDetailViewController: UIViewController {
             backFoodieChef.isHidden = true
             order.isHidden = true
             name.isHidden = true
+            address.isHidden = true
+            availability.isHidden = true
             avatar.isHidden = true
         } else if self.sender == "Foodie" {
             backChef.isHidden = true
@@ -60,6 +64,8 @@ class RecipeDetailViewController: UIViewController {
             backFoodieChef.isHidden = true
             order.isHidden = false
             name.isHidden = false
+            address.isHidden = false
+            availability.isHidden = false
             avatar.isHidden = false
             loadChefInfo(id: recipe.chefId!)
         } else if self.sender == "FoodieChef" {
@@ -68,6 +74,8 @@ class RecipeDetailViewController: UIViewController {
             backFoodieChef.isHidden = false
             order.isHidden = false
             name.isHidden = false
+            address.isHidden = false
+            availability.isHidden = false
             avatar.isHidden = false
             loadChefInfo(id: recipe.chefId!)
         }
@@ -98,6 +106,8 @@ class RecipeDetailViewController: UIViewController {
         userRef.observe(.value, with: { (snapshot) in
             let chef = Chef(snapshot: snapshot)
             self.name.text = "\(chef.firstName!) \(chef.lastName!)"
+            self.address.text = "\(chef.city!), \(chef.country!)"
+            self.availability.text = chef.availability!
             let imageURL = chef.photoURL!
             self.storageRef.reference(forURL: imageURL).data(withMaxSize: 10*1024*1024, completion: { (imgData, error) in
                 if error == nil {
